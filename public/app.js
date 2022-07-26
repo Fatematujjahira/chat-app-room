@@ -3,6 +3,8 @@ const socket = io();
 
 // selections
 const nameForm = document.getElementById('name_form');
+const roomCreateBtn = document.getElementById('create-btn')
+const roomNameInputEl = document.getElementById('create_room')
 const msgForm = document.getElementById('msg_form');
 const nameFormArea = document.querySelector(".name");
 const onlineUserList = document.getElementById('onlineUserList');
@@ -95,3 +97,21 @@ function openCanvas(user) {
         msgForm[1].value = user.id;
      
 }
+
+
+// create room function
+
+roomCreateBtn.addEventListener('click',(e)=>{
+    const roomName = roomNameInputEl.value;
+    if (roomName) {
+        socket.emit('create_room', roomName,()=>{
+            console.log('created');
+        })
+    }
+})
+
+
+//get public room
+socket.on('getPublicRooms',(publicRooms) =>{
+    console.log(publicRooms);
+})
