@@ -39,7 +39,7 @@ socket.on("get_active_users", (users) => {
         openCanvas(user)
         messages.innerHTML = ''
         })
-        li.textContent = user.id === socket.id ? "You" : user.name;
+        li.textContent = user.id === socket.id ? "you" : user.name;
         li.dataset.id = user.id;
         li.classList.add("list-group-item");
         li.classList.add("onLine");
@@ -68,7 +68,8 @@ msgForm.addEventListener('submit',(e) =>{
 
 
 
-//receive event
+//receive 
+
 socket.on("receive_a_message", (data, senderId) => {
 
    const user = activeUsers.find(u => u.id === data.id);
@@ -85,7 +86,7 @@ socket.on("receive_a_message", (data, senderId) => {
 })
 
 
-//open msg canvas
+// canvas function
 
 function openCanvas(user) {
   
