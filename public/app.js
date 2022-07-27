@@ -182,7 +182,8 @@ function closeModal() {
   document.querySelector(".modal-backdrop")?.remove("show");
 }
 
-//Leave room
+//Leave room//
+
 function leaveRoom(roomName) {
   socket.emit("leave_room", roomName, () => {
     innerCanvas.hidden = true;
