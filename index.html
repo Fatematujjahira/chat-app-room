@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat app</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- font awesome -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <!-- Modal start -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Create a new Public Room
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input id="create_room" class="form-control" placeholder="Room name" type="text" />
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="button" id="create-btn" class="btn btn-primary">
+                        Create Room
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- name area start-->
+    <div class=" background">
+        <div class=" container nameForms">
+            <form id="nameForm" class=" p-2">
+                <input type="text" placeholder="Enter your name">
+                <button type="submit" class="btn-form">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="bg-room">
+        <!-- room area start -->
+        <div hidden class="room">
+            <div class="aside">
+                <div class="public_rooms">
+                    <div class="d-flex align-items-center room-header justify-content-between">
+                        <h4 class="room_title pe-2">
+                            Public Rooms :
+
+                        </h4>
+                        <span data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            class="material-symbols-outlined text-primary " style="cursor: pointer">
+                            add_circle
+                        </span>
+                    </div>
+
+                    <div id="public_Rooms">
+                        <div class="accordion mt-3" id="accordionPanelsStayOpenExample">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="online_users">
+                    <h4 class="online_user_title mb-2">Online users : </h4>
+                    <ul class="list-group" id="onlineUserList">
+                    </ul>
+                </div>
+            </div>
+            <div class="canvas">
+                <div hidden class="inner_canvas">
+                    <div class="message_head justify-content-between">
+                       <div class="d-flex">
+                        <span data-bs-toggle="modal" data-bs-target="#exampleModal"
+                            class="material-symbols-outlined fw-bold fs-2 mt-2 text-secondary" style="cursor: pointer">
+                            account_circle
+                        </span>
+                         <h2 class="displayName ps-2"></h2>
+                       </div>
+                        <div class="">
+                            <span  class="material-symbols-outlined text-primary fw-bold plus_icon" style="cursor: pointer">
+                            call
+                        </span>
+                        <span
+                        class="material-symbols-outlined text-primary  fw-bold plus_icon" style="cursor: pointer">
+                        video_call
+                    </span>
+                    <span class="material-symbols-outlined text-primary plus_icon" style="cursor: pointer">
+                           info
+                        </span>
+                        </div>
+                    </div>
+                    <div class="message_container d-flex align-items-end">
+                        <ul class="list-group messages w-100 d-flex" ></ul>
+                    </div>
+                    <div class="message_form">
+                        <form id="msg_form">
+                            <div class="d-flex">
+                                <input placeholder="Write a message" class="form-control" type="text" />
+
+                                <input class="form-control" type="hidden" />
+
+                                <button class="btn_msg" type="submit"><span class="material-symbols-outlined">
+                                        send
+                                    </span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <h2 style="height: 100%;font-size: 40px;font-weight: 700; font-family: cursive;"
+                    class="d-flex align-items-center justify-content-center msg-empty text-center">Start your Conversation...🖤</h2>
+            </div>
+        </div>
+    </div>
+
+    <script src="/app.js"></script>
+</body>
+
+</html>
